@@ -2,8 +2,40 @@
   <h1>Pete's Tweets</h1>
 </div>
 
+<h4>Here are my tweets:</h4>
 <ul>
   <% @mytweets.each do |tweet| %>
+  <li> <%= tweet.text %> </li><br>
+  <% end %>
+</ul>
+
+<h4>Here are my followers:</h4>
+<ul>
+  <% @my_buddies.each do |buddy| %>
+   <% buddy.each do |tweet| %>
+   <li> <%= tweet.text %> </li><br>
+  <% end %>
+</ul>
+
+<h4>type in a user's tweets you would like to see:</h4>
+<br>
+<%= form_tag '/', method: :get do %>
+  <%= label_tag 'username' %>
+  <%= text_field_tag :username %>
+<%= submit_tag %>
+<% end %>
+
+<h4>Results:</h4>
+<ul>
+  <% @findtweets.each do |tweet| %>
   <li> <%= tweet.text %> </li>
   <% end %>
 </ul>
+
+<h4>Tweet from my account!</h4>
+<br>
+<%= form_tag '/' do %>
+  <%= label_tag 'tweet' %>
+  <%= text_field_tag :message %>
+<%= submit_tag %>
+<% end %>
