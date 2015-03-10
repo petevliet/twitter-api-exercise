@@ -9,13 +9,28 @@
   <% end %>
 </ul>
 
-<h4>Here are my followers:</h4>
+<h4>type in a username to see their followers:</h4>
+<br>
+<%= form_tag '/', method: :get do %>
+  <%= label_tag 'username_followers' %>
+  <%= text_field_tag :username_followers %>
+<%= submit_tag %>
+<% end %>
+
+<h4>Results:</h4>
 <ul>
-  <% @my_buddies.each do |buddy| %>
-   <% buddy.each do |tweet| %>
-   <li> <%= tweet.text %> </li><br>
+  <% @user_followers.each do |follower| %>
+  <li> <%= follower.username %> </li>
   <% end %>
 </ul>
+
+<h4>type in a username to follow them:</h4>
+<br>
+<%= form_tag '/', method: :get do %>
+  <%= label_tag 'username' %>
+  <%= text_field_tag :follow_username %>
+<%= submit_tag %>
+<% end %>
 
 <h4>type in a user's tweets you would like to see:</h4>
 <br>
@@ -39,3 +54,12 @@
   <%= text_field_tag :message %>
 <%= submit_tag %>
 <% end %>
+
+<h4>Here are my followers:</h4>
+<ul>
+  <% @my_buddies.each do |buddy| %>
+   <% buddy.each do |tweet| %>
+   <li> <%= tweet.text %> </li><br>
+  <% end %>
+  <% end %>
+</ul>

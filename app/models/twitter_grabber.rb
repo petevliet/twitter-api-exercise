@@ -25,4 +25,12 @@ class TwitterGrabber
     @client.update(message)
   end
 
+  def follow_user(follow_username)
+    @client.follow(follow_username)
+  end
+
+  def see_followers(username_followers)
+    @client.followers(username_followers)
+  end
+
 end
